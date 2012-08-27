@@ -28,3 +28,49 @@
 			and grape_variety.variety_id = wine_variety.variety_id and wine.wine_id = wine_variety.wine_id 
 			and inventory.wine_id = wine.wine_id 
 			");
+			
+	if($winename!="")
+	{
+			$query = $query." and wine_name like '%$winename%' ";
+	}
+	if($wineryname!="")
+	{
+			$query = $query." and winery_name like '%$wineryname%' ";
+	}
+	if($region!="")
+	{
+			$query = $query." and region_name like '%$region%' ";
+	}
+	if($year!="")
+	{
+			$query = $query. " and year >= $year ";
+	}
+	if($year1!="")
+	{
+			$query = $query." and year <= $year1 ";
+	}
+	if($variety!="" && $variety != 'ALL')
+	{
+			$query = $query." and variety = '%$variety%' ";
+	}
+	if($min_cost!="")
+	{
+			$query = $query." and price >= $min_cost ";
+	}
+	if($max_cost!="")
+	{
+			$query = $query." and price <= $max_cost ";
+	}
+	if($stock!="")
+	{
+			$query = $query." and on_hand >= $stock";
+	}
+	if($order!="")
+	{
+			$query = $query." and qty >= $order";
+	}
+	
+	$query = $quey."LIMIT 0,100";
+	
+	
+	
